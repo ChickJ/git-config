@@ -1,0 +1,13 @@
+[alias]
+	# Usage: git trim
+	#   Removes whitespace from all modified files.
+	trim = !git ls-files -mo --exclude-from=.gitignore -z | xargs -0 sani
+[credential]	
+	helper = wincred
+[difftool "vsdiff"]
+	cmd = estart.exe VSDIFF 64 HOBART -r1 \"$LOCAL\" \"$REMOTE\"
+[difftool "vsddiff"]	
+	cmd = estart.exe VSDIFF 64 HOBART -t \"$REMOTE\" \"$LOCAL\"
+	trustexitcode = false
+[mergetool "vsmerge"]
+	cmd = estart.exe VSMERGE 64 HOBART -smart -quiet \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"

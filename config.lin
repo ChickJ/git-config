@@ -1,0 +1,9 @@
+[credential]	
+	helper = gnome-keyring
+[difftool "vsdiff"]
+	cmd = vsdiff -r1 \"$LOCAL\" \"$REMOTE\"
+[difftool "vsddiff"]	
+	cmd = vsdiff \"$LOCAL\" \"$REMOTE\"
+	trustexitcode = false
+[mergetool "vsmerge"]
+	cmd = vsmerge 64 HOBART -smart -quiet \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"

@@ -1,0 +1,136 @@
+[alias]
+	# Example: git apply-missing-commits BRANCH
+	#   Cherry-pick commits in BRANCH not in the currrent branch.
+	apply-missing-commits = "!f() { commits="$(git cherry HEAD $1 | grep + | cut -c 3-8)" ; [[ ! -z $commits ]] && git cherry-pick ${commits} ; }; f"
+
+	# Usage: git branch-applied
+	#   Lists all branches that have been patched into the current
+	#   branch.
+	branch-applied = "!f() { branches="$(git for-each-ref --format='%(refname)' refs/heads/ )"; for b in ${branches}; do m="$(git missing ${b})"; if [[ -z ${m} ]]; then printf '    Patched: %s\n' "${b}"; else printf 'Not Patched: %s\n' "${b}"; fi done }; f"
+
+	# Usage: git change-os-linux
+	#   Change operating system preferences to Microsoft Windows.
+	change-os-linux = "!f() { \
+		git config --local credential.helper gnome-keyring ;\
+	}; f"
+
+	# Usage: git change-os-windows
+	#   Change operating system preferences to Linux.
+	change-os-windows = "!f() { \
+		git config --local credential.helper wincred ;\
+	}; f"
+
+	# Usage: git change-user-edoc
+	#   Change local user preferences to my pen name.
+	change-user-edoc = "!f() { \
+		git config --local commit.gpgsign true ;\
+		git config --local core.autocrlf input ;\
+		git config --local credential.helper gnome-keyring ;\
+		git config --local user.email edoc.rekam@gmail.com ;\
+		git config --local user.name \"Edoc Rekam\" ;\
+		git config --local user.signingkey 4F6C2D4FE3DFC831 ;\
+	}; f"
+
+	# Usage: git change-user-jon
+	#   Change local user preferences to my personal settings.
+	change-user-jon = "!f() { \
+		git config --local commit.gpgsign true ;\
+		git config --local core.autocrlf input ;\
+		git config --local credential.helper gnome-keyring ;\
+		git config --local user.email chick.jon@gmail.com ;\
+		git config --local user.name \"Jon Chick\" ;\
+		git config --local user.signingkey 4F6C2D4FE3DFC831 ;\
+	}; f"
+
+	# Usage: git change-user-work
+	#   Change local user preferences to my work settings.
+	change-user-work = "!f() { \
+		git config --local commit.gpgsign true ;\
+		git config --local core.autocrlf input ;\
+		git config --local credential.helper gnome-keyring ;\
+		git config --local user.email jon.chick@audicon.net ;\
+		git config --local user.name \"Jon Chick\" ;\
+		git config --local user.signingkey 4F6C2D4FE3DFC831 ;\
+	}; f"
+
+	# Usage: git last
+	#   Print the last commit message.
+	last = log -1 HEAD	
+
+	# Usage: git ls
+	#   Print the last 20 commits in a GITK style list.
+	ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%an]" --decorate -n20
+
+	# Usage: git ls-same
+	#   Print all branches identical to the current branch.
+	ls-same = "!git ls-tree -r HEAD | cut -c 14- | sort | uniq -D -w 40"	
+
+	# Example: git query-cs-effort
+	#   Lists the number of lines authors have contributed to in all CSharp
+	#   code for the last 500 commits.
+	query-cs-effort = "!f() { git ls-tree --name-only -r -z HEAD | egrep -z -Z -E 'cs$' | xargs -0 -n1 git blame --line-porcelain | grep '^author ' |sort | uniq -c | sort -nr ; }; f"
+
+	# Example: git query-cs-test-effort
+	#   Lists the number of lines authors have contributed to unit tests in
+	#   the last 500 commits.
+	query-cs-test-effort = "!f() { git ls-tree --name-only -r -z HEAD | egrep -z -Z -E 'Class.cs$' | xargs -0 -n1 git blame --line-porcelain | grep '^author ' |sort | uniq -c | sort -nr ; }; f"
+
+	# Example: git query-missing-commits BRANCH
+	#   Lists commits in BRANCH not in the current branch.
+	query-missing-commits = "!f() { commits="$(git cherry HEAD $1 | grep + | cut -c 3-8)" ; [[ ! -z $commits ]] && echo git cherry-pick ${commits} ; }; f"
+
+	# Usage: git remote-add-usb REPOSITORY
+	#   Add usb stick as remote repository.
+	remote-add-usb = "!f() { \
+		git remote remove usb &> /dev/null ;\
+		git remote add usb ~/mnt/usb/Code/${1} ;\
+	}; f"
+
+	# Usage: git remote-add-erhub REPOSITORY
+	#   Add github as remote repository.
+	remote-add-erhub = "!f() {\
+		git remote remove hub &> /dev/null  ;\
+		git remote add hub git@er.github.com:EdocRekam/${1} ;\
+	}; f"
+
+	# Usage: git remote-add-jonhub REPOSITORY
+	#   Add github as remote repository.
+	remote-add-jonhub = "!f() {\
+		git remote remove hub &> /dev/null  ;\
+		git remote add hub git@jc.github.com:ChickJ/${1} ;\
+	}; f"
+
+	# Usage: git remote-add-vso REPOSITORY
+	#     Add Visual Studio Team Services as remote repository
+	remote-add-vso = "!f) {\
+		git remote remove vso &> /dev/null ;\
+		git remote add vso https://tripitaka.visualstudio.com/DefaultCollection/_git/${1} ;\
+	}; f"
+
+	# Usage: git tfspush
+	#   Push the latest commit to TFS using the git-tf tool.
+	tfspush = tf checkin --deep --metadata --no-lock --mentions --keep-author
+
+	# Usage: git undo [N]
+	#   Set the repository head N number of commits back.
+	undo = "!f() { n=${1-1}; git reset HEAD~$n; }; f"
+
+	# Usage: git vsdiff
+	#   Perform a diff using the Visual SlickEdit graphical diff tool.
+	vsdiff = difftool -t vsdiff
+
+	# Usafe: git vsddiff
+	#   Compare all files
+	vsddiff = difftool -t vsddiff --dir-diff
+[am]
+	keepcr = true
+[core]
+	autocrlf = false
+	whitespace = trailing-space,space-before-tab,cr-at-eol
+	pager = less -F -X
+[difftool]
+	prompt = true
+[merge]
+	tool = vsmerge
+[push]
+	default = simple
