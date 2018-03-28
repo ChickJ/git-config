@@ -9,5 +9,7 @@
 [difftool "vsddiff"]	
 	cmd = estart.exe VSDIFF 64 HOBART -t \"$REMOTE\" \"$LOCAL\"
 	trustexitcode = false
+[gpg]
+	program = C:\\Program Files (x86)\\GnuPG\\bin\\gpg.exe
 [mergetool "vsmerge"]
 	cmd = estart.exe VSMERGE 64 HOBART -smart -quiet \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
