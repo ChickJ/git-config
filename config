@@ -55,7 +55,7 @@
 
 	# Usage: git last
 	#   Print the last commit message.
-	last = log -1 HEAD	
+	last = log -1 HEAD
 
 	# Usage: git ls
 	#   Print the last 20 commits in a GITK style list.
@@ -63,7 +63,7 @@
 
 	# Usage: git ls-same
 	#   Print all branches identical to the current branch.
-	ls-same = "!git ls-tree -r HEAD | cut -c 14- | sort | uniq -D -w 40"	
+	ls-same = "!git ls-tree -r HEAD | cut -c 14- | sort | uniq -D -w 40"
 
 	# Example: git query-cs-effort
 	#   Lists the number of lines authors have contributed to in all CSharp
@@ -102,7 +102,7 @@
 
 	# Usage: git remote-add-vso REPOSITORY
 	#     Add Visual Studio Team Services as remote repository
-	remote-add-vso = "!f) {\
+	remote-add-vso = "!f() {\
 		git remote remove vso &> /dev/null ;\
 		git remote add vso https://tripitaka.visualstudio.com/DefaultCollection/_git/${1} ;\
 	}; f"
