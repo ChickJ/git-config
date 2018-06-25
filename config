@@ -20,6 +20,17 @@
 		git config --local credential.helper wincred ;\
 	}; f"
 
+	# Usage: git change-user-arch
+	#   Change local user preferences to SmartExporter GDPR safe settings.
+	change-user-arch = "!f() { \
+		git config --local commit.gpgsign true ;\
+		git config --local core.autocrlf input ;\
+		git config --local credential.helper gnome-keyring ;\
+		git config --local user.email Architect@SmartExporter.org ;\
+		git config --local user.name \"Architect\" ;\
+		git config --local user.signingkey 4B33D207 ;\
+	}; f"
+
 	# Usage: git change-user-edoc
 	#   Change local user preferences to my pen name.
 	change-user-edoc = "!f() { \
