@@ -70,7 +70,7 @@
 
 	# Usage: git ls
 	#   Print the last 20 commits in a GITK style list.
-	ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%an]" --decorate -n20
+	ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%an]\\ [%G?\\ -\\ %GK]" --decorate -n20
 
 	# Usage: git ls-same
 	#   Print all branches identical to the current branch.
