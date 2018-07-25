@@ -41,6 +41,8 @@ main()
 
 	copy .gitconfig "$HOME/.gitconfig"
 	rm .gitconfig
+
+	copy .gitattributes "$HOME/.gitattributes"
 }
 
 main
