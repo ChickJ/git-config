@@ -1,9 +1,10 @@
-[credential]	
+[credential]
 	helper = gnome-keyring
 [difftool "vsdiff"]
-	cmd = vsdiff -r1 \"$LOCAL\" \"$REMOTE\"
-[difftool "vsddiff"]	
-	cmd = vsdiff \"$LOCAL\" \"$REMOTE\"
+	cmd = /usr/share/slickedit/bin/vs_exe -sugtk -q +new -sservername SlickEdit-vsdiff -st 0 -mdihide -p TreeDiff \"$LOCAL\" \"$REMOTE\" \"*.*\"
+	trustexitcode = false
+[difftool "vsddiff"]
+	cmd = /usr/share/slickedit/bin/vs_exe -sugtk -q +new -sservername SlickEdit-vsdiff -st 0 -mdihide -p TreeDiff \"$LOCAL\" \"$REMOTE\" \"*.*\"
 	trustexitcode = false
 [mergetool "vsmerge"]
 	cmd = vsmerge 64 HOBART -smart -quiet \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"

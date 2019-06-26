@@ -128,9 +128,9 @@
 
 	# Usage: git vsdiff
 	#   Perform a diff using the Visual SlickEdit graphical diff tool.
-	vsdiff = difftool -t vsdiff
+	vsdiff = difftool -t vsdiff --dir-diff
 
-	# Usafe: git vsddiff
+	# Usage: git vsddiff
 	#   Compare all files
 	vsddiff = difftool -t vsddiff --dir-diff
 [am]
