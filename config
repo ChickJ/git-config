@@ -142,7 +142,7 @@
 [difftool]
 	prompt = true
 [http "https://tripitaka.visualstudio.com"]
-	extraheader = Authorization: Basic Z2l0OnJ0bW1qbmZpNGpsdGt2Z3lhbGFpM2l1eXJ4dGN6cmZlZWI2eDM2ZHdpbWY3a2FjdXRkbmE=
+	extraheader = Authorization: Basic Z2l0OndkYmZtaHJlM2N2dzV5aWNnYzRpcWx4d3Y2NjNyeXozN25qejNkZWRjczJha2E1cGE0bXE=
 [merge]
 	tool = vsmerge
 [push]
