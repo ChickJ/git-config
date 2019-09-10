@@ -115,7 +115,7 @@
 	#     Add Visual Studio Team Services as remote repository
 	remote-add-vso = "!f() {\
 		git remote remove vso &> /dev/null ;\
-		git remote add vso https://tripitaka.visualstudio.com/DefaultCollection/_git/${1} ;\
+		git remote add vso https://tripitaka@dev.azure.com/tripitaka/${1}/_git/${1} ;\
 	}; f"
 
 	# Usage: git tfspush
@@ -141,7 +141,7 @@
 	pager = less -F -X
 [difftool]
 	prompt = true
-[http "https://tripitaka.visualstudio.com"]
+[http "https://dev.azure.com"]
 	extraheader = Authorization: Basic Z2l0OndkYmZtaHJlM2N2dzV5aWNnYzRpcWx4d3Y2NjNyeXozN25qejNkZWRjczJha2E1cGE0bXE=
 [merge]
 	tool = vsmerge
