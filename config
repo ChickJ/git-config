@@ -1,6 +1,6 @@
 [alias]
 	# Example: git apply-missing-commits BRANCH
-	#   Cherry-pick commits in BRANCH not in the currrent branch.
+	#   Cherry-pick commits in BRANCH not in the current branch.
 	apply-missing-commits = "!f() { commits="$(git cherry HEAD $1 | grep + | cut -c 3-8)" ; [[ ! -z $commits ]] && git cherry-pick ${commits} ; }; f"
 
 	# Usage: git branch-applied
@@ -141,8 +141,6 @@
 	pager = less -F -X
 [difftool]
 	prompt = true
-[http "https://dev.azure.com"]
-	extraheader = Authorization: Basic Z2l0OndkYmZtaHJlM2N2dzV5aWNnYzRpcWx4d3Y2NjNyeXozN25qejNkZWRjczJha2E1cGE0bXE=
 [merge]
 	tool = vsmerge
 [push]

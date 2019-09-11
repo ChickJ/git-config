@@ -7,11 +7,11 @@ OS=`uname -o`
 copy()
 {
         if [ $1 -ot $2 ]; then
-                printf "Skip copying [${YELLOW}$1${NC}] -\> [${YELLOW}$2${NC}]\n"
+                printf "Skip copying [${YELLOW}$1${NC}] -> [${YELLOW}$2${NC}]\n"
                 return
         fi
 
-        printf "Copying [${YELLOW}$1${NC}] -\> [${YELLOW}$2${NC}]\n"
+        printf "Copying [${YELLOW}$1${NC}] -> [${YELLOW}$2${NC}]\n"
         cp -f $1 $2
 }
 
@@ -37,6 +37,11 @@ main()
 	else
 		printf "Customizing MSys configuration . . . \n"
 		cat config.win >> .gitconfig
+	fi
+
+	if [ -s config.secure ]; then
+		printf "Ammending secure local only settings . . .\n"
+		cat config.secure >> .gitconfig
 	fi
 
 	copy .gitconfig "$HOME/.gitconfig"
